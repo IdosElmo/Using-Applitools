@@ -8,6 +8,11 @@ addons:
     packages:
     - google-chrome-stable
 
+before-install:
+  - "export DISPLAY=99:0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
+
 script: 
   - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
   - mvn test -B
