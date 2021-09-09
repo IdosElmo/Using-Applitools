@@ -8,6 +8,7 @@ addons:
     packages:
     - google-chrome-stable
 
-script: 
-  - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
-  - mvn test -B
+before-install:
+  - "export DISPLAY=99:0"
+  - "export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`"
+  - sleep 3
