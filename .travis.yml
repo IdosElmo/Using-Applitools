@@ -1,5 +1,9 @@
 sudo: required
+
 language: java
+
+services:
+  - xvfb
 
 addons:
   apt:
@@ -8,8 +12,8 @@ addons:
     packages:
     - google-chrome-stable
 
-before-install:
+before-script:
   - "export DISPLAY=99:0"
+
+script:
   - "export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3
